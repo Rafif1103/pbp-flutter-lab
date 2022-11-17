@@ -69,16 +69,18 @@ class _MyResultPageState extends State<MyResultPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Center(child: const Text('Data Budget')),
 
-                        for (int i = 0; i < counter; i++) ListView(
+                        for (int i = 0; i < dataSekarang.length; i++) ListView(
                           padding: const EdgeInsets.only(top: 20, bottom: 20),
                           shrinkWrap: true,
                           children: [
-                            SizedBox(height: 20),
+                            SizedBox(
+                              height: 20
+                            ),
                             // TODO: Munculkan informasi yang didapat dari form
                             Text( 
                               dataSekarang[i][0],
+                              style: TextStyle(fontSize: 25),
                               textAlign: TextAlign.left,
                             ),
                             Text(

@@ -20,10 +20,9 @@ class Data {
 
 class _MyFormPageState extends State<MyFormPage> {
     final _formKey = GlobalKey<FormState>();
-    final String dropdownLabel = "Pilih Jenis";
     String _judul = "";
-    String _tipeBudget = "Pemasukan";
-    int _nominal = 0;
+    String _tipeBudget = "Pilih Jenis";
+    String _nominal = "";
     List<String> listTipeBudget = ["Pilih Jenis", "Pemasukan", "Pengeluaran"];
 
 
@@ -132,17 +131,16 @@ class _MyFormPageState extends State<MyFormPage> {
                                   inputFormatters: <TextInputFormatter>[
                                                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                                     ],
-                                  
-                                  // Menambahkan behavior saat nama diketik 
                                   onChanged: (String? value) {
                                       setState(() {
-                                         _nominal = int.parse(value!);
+                                          _nominal = value!;
                                       });
                                   },
+
                                   // Menambahkan behavior saat data disimpan
                                   onSaved: (String? value) {
                                       setState(() {
-                                         _nominal = int.parse(value!);
+                                         _nominal = value!;
                                          
                                       });
                                   },
@@ -160,7 +158,7 @@ class _MyFormPageState extends State<MyFormPage> {
                              
                               trailing: DropdownButton(
                                   alignment: AlignmentDirectional.topEnd,
-                                  value: dropdownLabel,
+                                  value: _tipeBudget,
                                   icon: const Icon(Icons.keyboard_arrow_down),
                                   items: listTipeBudget.map((String items) {  
                                   return DropdownMenuItem(
@@ -188,7 +186,7 @@ class _MyFormPageState extends State<MyFormPage> {
                             ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                Data._dataSaved.add([_judul, _nominal.toString(), _tipeBudget]);
+                                Data._dataSaved.add([_judul, _nominal, _tipeBudget]);
                                 showDialog(
                                   context: context,
                                   builder: (context) {
