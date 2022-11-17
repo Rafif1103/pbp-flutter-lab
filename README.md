@@ -65,3 +65,59 @@ floatingActionButton: Row(
         ],
       ),//trailing comma makes auto-formatting nicer for build methods.
 ```
+
+
+
+--------------------------------------------------TUGAS 8 README----------------------------------------------------
+
+**Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement**
+Navigator.pushReplacement merupakan salah satu cara untuk menghapus page yang sedang dilihat sambil kita keluar dari page tersebut. Navigator.pushReplacement hanya mengganti top of stack atau top route nya saja. Navigator.push merupakan salah satu cara untuk melakukan routing dari satu page ke page lain pada flutter. Perbedaan kedua Navigator tersebut adalah pushReplacement menambahkan route sambil menghapus top of route. Sedangkan method push hanya melakukan push route tanpa pop atau menghapus route sebelumnya
+
+**Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya**
+1. Basic Widget: Column, Container, appBar, Icons, Row
+2. Text Widget: Text, TextStyle, TextButton
+3. Interactivity Widget: FloatingActionButton
+
+**Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).**
+1. Event onPressed, trigger saat suatu button ditekan (biasanya saat ditekan dengan LMB)
+Contoh:
+```dart
+TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('OK'),
+          ),
+```
+2. Event onChange, trigger saat terjadi perubahan seperti pada TextField
+Contoh:
+```dart
+TextField(
+          controller: _controller,
+          onChanged: (String value) async {
+            if (value != '13') {
+              return;
+            }
+      ...
+```
+3. Event onClick, trigger saat button ditekan baik oleh mouse atau secara langsung dengan tangan
+Contoh:
+```dart
+Stream<MouseEvent> get onClick => Element.clickEvent.forTarget(this);
+```
+4. Event onSave, trigger saat isi final dari form di save menggunakan FormState.save
+Contoh:
+```dart
+final FormFieldSetter<T>? onSaved;
+```
+
+**Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.**
+Navigator akan melakukan routing halaman pada drawer yang bekerja mirip seperti mekanisme / cara kerja stack. Dimana, halaman yang akan diakses berikutnya, akan di push ke dalam stack dan halaman sebelumnya akan berada di bawah halaman yang baru ditambahkan. Jika kita ingin mengakses halaman sebelumnya, kita dapat melakukan pop pada top of stack dengan method pop().
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.**
+1. Membuat form.dart dan result.dart sebagai halaman untuk membuat form dan menampilkan hasil form
+2. Mengimplementasikan drawer sehingga user dapat navigate ke semua halaman
+3. Pada form.dart Membuat text field form untuk judul dan nominal
+4. Membuat suatu dropdown menu untuk memilih tipe budget user beserta tombol untuk save informasi
+5. Menyimpan informasi dari form pada sebuah List
+6. Mengiterasikan List tersebut dan menampilkannya pada result.dart
