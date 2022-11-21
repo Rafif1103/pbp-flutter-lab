@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Action;
-import 'package:counter_7/form.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/mywatchlist_page.dart';
 import 'package:counter_7/main.dart';
 
 
@@ -51,6 +52,16 @@ class _MyResultPageState extends State<MyResultPage> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => const MyResultPage()),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('My Watch List'),
+                      onTap: () {
+                        // Route menu ke halaman My Watch List
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MyWatchListPage()),
                         );
                       },
                     ),

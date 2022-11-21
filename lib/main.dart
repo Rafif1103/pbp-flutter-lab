@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/form.dart';
-import 'package:counter_7/result.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/result.dart';
+import 'package:counter_7/page/mywatchlist_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,6 +121,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
+              ListTile(
+                title: const Text('My Watch List'),
+                onTap: () {
+                  // Route menu ke halaman My Watch List
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyWatchListPage()),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -171,14 +182,15 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          if(_counter != 0)FloatingActionButton( // first FAB to perform decrement 
+          if(_counter != 0)FloatingActionButton(
+            heroTag: "btn1", // first FAB to perform decrement 
             onPressed: _decrementCounter,
             child: Icon(Icons.remove),
             
             
           ),
           FloatingActionButton( // second FAB to perform increment
-
+            heroTag: "btn2",
             onPressed: _incrementCounter,
             child: Icon(Icons.add),
           ),
