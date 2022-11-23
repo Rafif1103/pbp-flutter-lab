@@ -11,7 +11,8 @@ class MyWatchListDetails extends StatefulWidget {
 }
 
 class MyWatchListStateDetails extends State<MyWatchListDetails> {
-    Fields current_fields = Details.test;
+    Fields currentFields = Details.test;
+    @override
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
@@ -19,25 +20,6 @@ class MyWatchListStateDetails extends State<MyWatchListDetails> {
         ),
         body: Column(
           children: <Widget>[
-              
-              // Padding(
-                
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.end,
-              //     crossAxisAlignment: CrossAxisAlignment.end,
-              //     children: <Widget>[
-              //       Text(
-              //         current_fields.filmTitle,
-              //         textAlign: TextAlign.center,
-              //         style: const TextStyle(
-              //           fontWeight: FontWeight.bold, 
-              //           fontSize: 30,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
@@ -52,7 +34,7 @@ class MyWatchListStateDetails extends State<MyWatchListDetails> {
                       child: Column(
                           children: <Widget>[
                             Text(
-                              current_fields.filmTitle,
+                              currentFields.filmTitle,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold, 
@@ -77,7 +59,7 @@ class MyWatchListStateDetails extends State<MyWatchListDetails> {
                             text: 'Release Date: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          TextSpan(text: current_fields.filmReleaseDate),
+                          TextSpan(text: currentFields.filmReleaseDate),
                           ]
                         ),
                       ),
@@ -96,12 +78,12 @@ class MyWatchListStateDetails extends State<MyWatchListDetails> {
                             text: 'Rating: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          TextSpan(text: current_fields.filmRating.toString()),
+                          TextSpan(text: currentFields.filmRating.toString()),
                           ]
                         ),
                       ),
                     ),
-                    if(current_fields.isWatched == "Yes")...[
+                    if(currentFields.isWatched == "Yes")...[
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: RichText(
@@ -154,11 +136,30 @@ class MyWatchListStateDetails extends State<MyWatchListDetails> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      current_fields.filmReview,
+                      currentFields.filmReview,
                       textAlign: TextAlign.start,
                     ),
                   ),
                 ]
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child:Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [TextButton(
+                  style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  ),
+                  onPressed: () { 
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Back'),
+                ),
+              ],
               ),
             ),
           ],

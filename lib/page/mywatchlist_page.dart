@@ -21,6 +21,7 @@ class Details {
 
 class MyWatchListState extends State<MyWatchListPage>{
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -100,11 +101,18 @@ class MyWatchListState extends State<MyWatchListPage>{
                     decoration: BoxDecoration(
                         color:Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.black,
+                        boxShadow: [
+                          if(snapshot.data![index].fields.isWatched == "Yes")...[
+                            const BoxShadow(
+                              color: Colors.blue,
                               blurRadius: 2.0
-                          )
+                            ),
+                          ] else...[
+                            const BoxShadow(
+                              color: Colors.red,
+                              blurRadius: 2.0
+                            )
+                          ],
                         ]
                     ),
                     child: Column(
@@ -120,15 +128,20 @@ class MyWatchListState extends State<MyWatchListPage>{
                                     );
                             },
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
                               children:[
                                 Text(
                                   "${snapshot.data![index].fields.filmTitle}",
                                   style: const TextStyle(
+                                    color: Colors.black,
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
                                   ),
-                              ),
-                               const SizedBox(height: 4),],
+                                ),
+                               const SizedBox(
+                                height: 1,
+                               ),
+                              ],
                             ),
                           ),
                         ],

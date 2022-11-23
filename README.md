@@ -68,7 +68,7 @@ floatingActionButton: Row(
 
 
 
---------------------------------------------------TUGAS 8 README----------------------------------------------------
+--------------------------------------------------TUGAS 8 README------------------------------------
 
 **Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement**
 Navigator.pushReplacement merupakan salah satu cara untuk menghapus page yang sedang dilihat sambil kita keluar dari page tersebut. Navigator.pushReplacement hanya mengganti top of stack atau top route nya saja. Navigator.push merupakan salah satu cara untuk melakukan routing dari satu page ke page lain pada flutter. Perbedaan kedua Navigator tersebut adalah pushReplacement menambahkan route sambil menghapus top of route. Sedangkan method push hanya melakukan push route tanpa pop atau menghapus route sebelumnya
@@ -121,3 +121,32 @@ Navigator akan melakukan routing halaman pada drawer yang bekerja mirip seperti 
 4. Membuat suatu dropdown menu untuk memilih tipe budget user beserta tombol untuk save informasi
 5. Menyimpan informasi dari form pada sebuah List
 6. Mengiterasikan List tersebut dan menampilkannya pada result.dart
+
+
+---------------------------------------TUGAS 9------------------------------------------------------
+**Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?**
+Kita dapat melakukan fetch data dari tipe data json ke flutter menggunakan library bawaan flutter yaitu code generation library, tepatnya menggunakan json_serializable. Hal ini cocok untuk convert data json dalam skala menengah ke besar. Namun, jika data yang diolah masih dalam skala kecil, penggunaan model lebih user-friendly.
+
+**Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.**
+1. Future builder widget untuk mengolah data hasil konversi dari json
+2. Widget async untuk menerima http response untuk di convert ke json
+3. Column, Align, Padding untuk mengatur layout dari teks yang akan ditampilkan
+4. Text, RichText, TextSpan untuk memodifikasi font (weight & ukuran) dari tuisan yang ditampilkan
+5. Appbar widget untuk menampilkan hamburger/drawer agar bisa navigasi dari 1 page ke page lainnya
+
+**Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.**
+1. Menambahkan dependensi HTTP ke proyek agar dapat melakukan pertukaran data melalui HTTP request seperti GET, POST, PUT
+2. Membuat model sesuai respons data yang diterima dari web service (dapat menggunakan JSON parse website)
+3. Membuat HTTP request ke web service menggunakan dependency http
+4. Mengonversikan objek yang didapat ke model yang telah dibuat
+5. Menampilkan data yang sudah dikonversi dengan widget future builder
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.**
+1. Melakukan refactor file agar lebih rapi
+2. Melakukan parse method json dan membuat model menggunakan website Quicktype
+3. Copy paste code hasil konversi ke file mywatchlist.dart
+4. Melakukan ```flutter pub add http``` untuk menambahkan package http beserta import ```<uses-permission android:name="android.permission.INTERNET" />``` pada direktori ```android/app/src/main/AndroidManifest.xml```
+5. Menampilkan judul film menggunakan future builder dan menyimpan class field agar dapat diproses pada page details
+6. Menambahkan textbutton agar saat kotak judul ditekan, user dapat ternavigasi ke halaman detail
+7. Mengambil field yang sudah disimpan dengan getter dan menampilkan informasi detail mengenai film yang ditekan
+8. Menambahkan tombol back pada halaman detail dengan widget textbutton dan column agar button dapat stretch secara horizontal
